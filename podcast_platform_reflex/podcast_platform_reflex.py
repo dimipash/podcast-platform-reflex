@@ -3,6 +3,7 @@
 import reflex as rx
 
 from rxconfig import config
+from podcast_platform_reflex.pages import *
 
 
 class State(rx.State):
@@ -31,24 +32,6 @@ def index() -> rx.Component:
             rx.link(
                 rx.button("Contact US!"),
                 href="/contact",
-                is_external=False,
-            ),
-            spacing="5",
-            justify="center",
-            min_height="85vh",
-        ),
-    )
-
-
-def contact_page() -> rx.Component:
-    # Welcome Page (Index)
-    return rx.container(
-        rx.color_mode.button(position="top-right"),
-        rx.vstack(
-            rx.heading("Contact", size="9", on_click=State.handle_click_event),
-            rx.link(
-                rx.button("Home"),
-                href="/",
                 is_external=False,
             ),
             spacing="5",
