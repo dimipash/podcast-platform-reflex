@@ -8,22 +8,48 @@ from rxconfig import config
 class State(rx.State):
     """The app state."""
 
+    title: str = "Welcome to Reflex!"
+    new_title: str = "Welcome to Podcast Platform!"
+
+    @rx.event
+    def handle_click_event(self):
+        self.title = self.new_title
+
 
 def index() -> rx.Component:
     # Welcome Page (Index)
     return rx.container(
         rx.color_mode.button(position="top-right"),
         rx.vstack(
-            rx.heading("Welcome to Reflex!", size="9"),
+            rx.heading(State.title, size="9", on_click=State.handle_click_event),
             rx.text(
                 "Get started by editing ",
                 rx.code(f"{config.app_name}/{config.app_name}.py"),
+                on_mouse_over=State.handle_click_event,
                 size="5",
             ),
             rx.link(
-                rx.button("Check out our docs!"),
-                href="https://reflex.dev/docs/getting-started/introduction/",
-                is_external=True,
+                rx.button("Contact US!"),
+                href="/contact",
+                is_external=False,
+            ),
+            spacing="5",
+            justify="center",
+            min_height="85vh",
+        ),
+    )
+
+
+def contact_page() -> rx.Component:
+    # Welcome Page (Index)
+    return rx.container(
+        rx.color_mode.button(position="top-right"),
+        rx.vstack(
+            rx.heading("Contact", size="9", on_click=State.handle_click_event),
+            rx.link(
+                rx.button("Home"),
+                href="/",
+                is_external=False,
             ),
             spacing="5",
             justify="center",
@@ -33,4 +59,5 @@ def index() -> rx.Component:
 
 
 app = rx.App()
-app.add_page(index)
+app.add_page(index, route="/")
+app.add_page(contact_page, route="/contact")
