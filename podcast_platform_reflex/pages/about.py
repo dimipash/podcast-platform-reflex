@@ -1,20 +1,11 @@
 import reflex as rx
 from podcast_platform_reflex import ui
+from podcast_platform_reflex.pages.layout import page_layout
+
 
 @rx.page("/about")
 def about_page() -> rx.Component:
-    # Welcome Page (Index)
-    return rx.container(
-        rx.color_mode.button(position="top-right"),
-        rx.vstack(
-            ui.page_heading("About"),
-            rx.link(
-                rx.button("Home"),
-                href="/",
-                is_external=False,
-            ),
-            spacing="5",
-            justify="center",
-            min_height="85vh",
-        ),
+    return page_layout(
+        rx.text("This is the About Page, I will add to it later :)"),
+        title="About Page",
     )
