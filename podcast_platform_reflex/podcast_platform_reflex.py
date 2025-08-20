@@ -3,6 +3,7 @@
 import reflex as rx
 
 from rxconfig import config
+from podcast_platform_reflex.contact import *
 from podcast_platform_reflex.pages import *
 
 
@@ -43,4 +44,3 @@ def index() -> rx.Component:
 
 app = rx.App()
 app.add_page(index, route="/")
-app.add_page(contact_page, route="/contact")
