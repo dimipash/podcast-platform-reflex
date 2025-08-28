@@ -5,20 +5,17 @@ def navbar_link(text: str, url: str) -> rx.Component:
         rx.text(text, size="4", weight="medium"), href=url
     )
 
+def mobile_navbar_link(url:str):
+    return rx.redirect(url)
 
 def navbar() -> rx.Component:
     return rx.box(
         rx.desktop_only(
             rx.hstack(
-                rx.hstack(
-                    rx.image(
-                        src="/logo.jpg",
-                        width="2.25em",
-                        height="auto",
-                        border_radius="25%",
-                    ),
+                rx.hstack(                    
                     rx.heading(
-                        "Reflex", size="7", weight="bold"
+                        "Podcast Platform", size="7", weight="bold",
+                        on_click=lambda: mobile_navbar_link("/")
                     ),
                     align_items="center",
                 ),
@@ -36,15 +33,10 @@ def navbar() -> rx.Component:
         ),
         rx.mobile_and_tablet(
             rx.hstack(
-                rx.hstack(
-                    rx.image(
-                        src="/logo.jpg",
-                        width="2em",
-                        height="auto",
-                        border_radius="25%",
-                    ),
+                rx.hstack(                    
                     rx.heading(
-                        "Reflex", size="6", weight="bold"
+                        "Podcast Platform", size="6", weight="bold", 
+                        on_click=lambda: mobile_navbar_link("/")
                     ),
                     align_items="center",
                 ),
@@ -53,10 +45,10 @@ def navbar() -> rx.Component:
                         rx.icon("menu", size=30)
                     ),
                     rx.menu.content(
-                        rx.menu.item("Home"),
-                        rx.menu.item("About"),
-                        rx.menu.item("Pricing"),
-                        rx.menu.item("Contact"),
+                        rx.menu.item("Home", on_click=lambda: mobile_navbar_link("/")),
+                        rx.menu.item("About", on_click=lambda: mobile_navbar_link("/about")),
+                        rx.menu.item("Pricing", on_click=lambda: mobile_navbar_link("/pricing")),
+                        rx.menu.item("Contact", on_click=lambda: mobile_navbar_link("/contact")),
                     ),
                     justify="end",
                 ),

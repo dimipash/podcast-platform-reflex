@@ -1,5 +1,5 @@
 import reflex as rx
-from podcast-platform-reflex.ui.nav import navbar
+from podcast_platform_reflex.ui.nav import navbar
 
 
 
