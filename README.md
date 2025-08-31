@@ -15,7 +15,7 @@ This is a web application built with Reflex, designed to serve as a podcast plat
 
 - **Home Page**: A welcoming page with a dynamic title.
 - **Navigation Bar**: Responsive navigation for desktop and mobile.
-- **Contact Page**: A dedicated page for contact information (forms.py, page.py).
+- **Contact Page**: Implemented with a form to allow users to submit messages, including their name and message content. Submitted messages are stored in a database.
 - **About Page**: 
 - **Pricing Page**: 
 
